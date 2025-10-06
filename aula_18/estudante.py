@@ -10,7 +10,7 @@ class Estudante(Pessoa):
         self.materia = materia
         self.nota = nota
         aula = self.materias.get(self.materia)
-        print(f"aula atual: {aula}")
+        
         if aula:
             aula.append(self.nota)
         else:
