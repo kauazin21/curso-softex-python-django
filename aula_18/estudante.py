@@ -15,8 +15,6 @@ class Estudante(Pessoa):
             aula.append(self.nota)
         else:
             self.materias[self.materia] = [self.nota]
-        
-        print(f"dicionario de materias: {self.materias}")
 
     def mostrar_informacoes(self):
         print(f"Nome: {self.nome} | Idade: {self.idade} | Matrícula: {self.matricula}")
