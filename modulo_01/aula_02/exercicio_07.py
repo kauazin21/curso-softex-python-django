@@ -1,3 +1,4 @@
+#Classificador de idade
 idade = int(input("Digite sua idade: "))
 
 if idade >= 0:
