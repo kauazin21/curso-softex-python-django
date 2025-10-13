@@ -1,4 +1,4 @@
--- Active: 1759940460693@@127.0.0.1@3306
+-- Active: 1760370889518@@127.0.0.1@3306
 CREATE TABLE alunos(
     id INTEGER PRIMARY KEY,
     nome TEXT NOT NULL
@@ -62,4 +62,3 @@ FROM
 INNER JOIN alunos_cursos AS AC ON AC.id_aluno = A.id
 INNER JOIN cursos AS C ON AC.id_curso = C.id
 GROUP BY C.titulo;
-
