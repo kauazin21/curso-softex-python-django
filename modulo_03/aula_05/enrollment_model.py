@@ -84,3 +84,4 @@ class EnrollmentModel:
         students = self.db_conn.cursor.fetchall()
         self.db_conn.close()
         return students
+        
