@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect # 1. Importe o 'redirect'
+from django.shortcuts import render, redirect,get_object_or_404 # 1. Importe o 'redirect'
 from .models import Tarefa
 from .forms import TarefaForm # 2. Importe nosso novo 'TarefaForm'
 
@@ -29,3 +29,24 @@ def home(request):
         'form': form, # 10. Envie o 'form' (vazio ou com erros) para o template
     }
     return render(request, 'home.html', context)
+
+def concluir_tarefa(request, pk):
+    # 1. Busca a tarefa pela 'pk' (ID) vinda da URL.
+    # Se não achar, retorna um erro 404.
+    tarefa = get_object_or_404(Tarefa, pk=pk)
+    # 2. Segurança: Apenas execute se o método for POST
+    if request.method == 'POST':
+        # 3. A Lógica de "Update"
+        tarefa.concluida = True
+        tarefa.save() # Não se esqueça de salvar!
+        # 4. Redireciona de volta para a 'home' (Padrão PRG)
+        return redirect('home')
+def deletar_tarefa(request, pk):
+    # 1. Busca a tarefa
+    tarefa = get_object_or_404(Tarefa, pk=pk)
+    # 2. Segurança: Apenas execute se o método for POST
+    if request.method == 'POST':
+        # 3. A Lógica de "Delete"
+        tarefa.delete()
+        # 4. Redireciona de volta para a 'home'
+        return redirect('home')
